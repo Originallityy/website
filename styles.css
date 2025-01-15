@@ -96,6 +96,11 @@ img:hover {
     padding: 10px; /* Increase padding on hover */
 }
 
+.small-image {
+  width: 100px; /* or any desired width */
+  height: auto; /* maintain aspect ratio */
+}
+
 a:link {
     color: #ad03fc;
     text-align: center;
