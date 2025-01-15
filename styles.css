@@ -1,3 +1,5 @@
+@import url('/favicon.ico');
+
 html, body {
     height: 100%;
     margin: 0;
@@ -63,6 +65,19 @@ body::after {
     }
 }
 
+@keyframes textAnimation {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stretchBar {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
 
 body::after {
     content: "";
@@ -77,11 +92,15 @@ body::after {
     z-index: 0; /* Ensure the distortion effect is above the body content */
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6, img {
     transition: transform 0.2s ease-out, margin 0.2s ease-out, padding 0.2s ease-out;
     text-shadow: 0 0 5px rgba(255, 0, 0, 0.75), 0 0 10px rgba(0, 255, 0, 0.75), 0 0 15px rgba(0, 0, 255, 0.75);
     position: relative; /* Ensure text is above the pseudo-elements */
     z-index: 3; /* Ensure text is above the scan lines and distortion effect */
+}
+
+p, h1, h2, h3, h4, h5, h6, img{
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 img {
@@ -101,6 +120,12 @@ img:hover {
   height: auto; /* maintain aspect ratio */
 }
 
+a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
 a:link {
     color: #ad03fc;
     text-align: center;
@@ -114,6 +139,20 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: #570080;
+    color: darkred;
     text-align: center;
+}
+
+.animate-text {
+    opacity: 0; /* Initially hide the text */
+    animation: textAnimation 1s ease-out forwards;
+    animation-delay: var(--animation-delay, 0s);
+}
+
+.animated-bar {
+    width: 0;
+    height: 2px; /* Adjust the height of the bar */
+    background-color: white; /* Adjust the color of the bar */
+    animation: stretchBar 2s forwards; /* Adjust the duration of the animation */
+    margin: 20px 0; /* Adjust the margin as needed */
 }

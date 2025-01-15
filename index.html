@@ -4,37 +4,53 @@
   <title>dex's website</title>
   <link rel="stylesheet" href="styles.css">
   <meta property="og:title" content="dex's really cool website" />
-  <meta property="og:url" content="https://nightcrawcode.github.io/Drwhomust-links-website/" />
-  <meta property="og:image" content="https://repository-images.githubusercontent.com/859010041/a92717c6-104c-40ac-b487-931182eef495" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <style>
-    .small-image {
-      width: 50px;
-      height: 50px;
-    }
-</style>
-</head>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (!window.location.hash.includes("no-anim")) {
+        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, img").forEach(function(element) {
+          const rect = element.getBoundingClientRect();
+          const delay = rect.top / window.innerHeight * 1.25; // Adjust the multiplier as needed
+          element.style.setProperty('--animation-delay', `${delay}s`);
+          element.classList.add("animate-text");
+        });
+      }
 
+      // Fetch a random cat fact
+      fetch('https://catfact.ninja/fact')
+        .then(response => response.json())
+        .then(data => {
+          const fact = data.fact.replace(/\b[A-Z]/g, char => char.toLowerCase());
+          document.getElementById('cat-fact').innerText = fact;
+        })
+        .catch(error => console.error('Error fetching cat fact:', error));
+    });
+  </script>
+</head>
 <body>
   <div class="center-container">
     <div style="display: flex; align-items: center;">
-      <a href="/">
-        <img src="dex.gif" class="small-image" alt="wip running guy">
+      <a href="/#no-anim">
+        <img src="dex.gif" class="small-image" alt="wip running guy" style="width: 50px; height: auto;" loading="lazy">
       </a>
       <h1>sup this is dex's website</h1>
-      <h2 style="margin-left: 10px; font-size: 16px;" ><i>   a really cool one as well</i></h2>
-      <h2 style="position: absolute; right: 10px; font-size: 16px;"> <i>/Home</i></h2>
+      <h2 style="margin-left: 10px; font-size: 16px;"><i>   a really cool one as well</i></h2>
+      <h2 style="margin-left: 10px; font-size: 10px;"><i>   [trust]</i></h2>
+      <h2 style="position: absolute; right: 10px; font-size: 16px;"><i>/Home</i></h2>
     </div>
   </div>
   <h1>About this site</h1>
   <p>this is a little website to have link and other stuff that i made on the internet</p>
-  <hr>
+  <hr class="animated-bar">
+  <h1>fun cat fact for this session</h1>
+  <p id="cat-fact">fetching fact for this session, please wait!! :3</p>
+  <hr class="animated-bar">
   <h3>cool internet badges i collected:</h3>
-  <img src="opengit.jpg" alt="This website is open soruce on github!">
-  <img src="discord.gif" alt="Use discord">
-  <img src="internetexploer.gif" alt="best viewed with internter exploer">
-  <img src="madewithmac.gif" alt="this website was made on a mac">
-  <hr>
-  <img src="what-is-good.png" alt="a nightcrawler chilling">
+  <img src="opengit.jpg" alt="This website is open soruce on github!" loading="lazy">
+  <img src="discord.gif" alt="Use discord" loading="lazy">
+  <img src="internetexploer.gif" alt="best viewed with internter exploer" loading="lazy">
+  <img src="madewithmac.gif" alt="this website was made on a mac" loading="lazy">
+  <hr class="animated-bar">
+  <img src="what-is-good.png" alt="a nightcrawler chilling" loading="lazy">
 </body>
 </html>
