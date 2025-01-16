@@ -8,7 +8,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       if (!window.location.hash.includes("no-anim")) {
-        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, img").forEach(function(element) {
+        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, img, li").forEach(function(element) {
           const rect = element.getBoundingClientRect();
           const delay = rect.top / window.innerHeight * 1.25; // Adjust the multiplier as needed
           element.style.setProperty('--animation-delay', `${delay}s`);
@@ -58,10 +58,18 @@
       <h2 style="position: absolute; right: 10px; font-size: 16px;"><i>/Home</i></h2>
     </div>
   </div>
-  <h1>About this site</h1>
+  <h1>hihi!</h1>
   <a id="link-404">
-    <h1>links!!! [faster navigation]</h1>
+    <h2>links!!! [faster navigation]</h2>
   </a>
+  <h3>this is my own website!! this has info of everything, like...</h3>
+  <p>what i created...</p>
+  <p>about me...</p>
+  <p>website info...</p>
+  <p>socials...</p>
+  <p>fun cat facts...</p>
+  <p>cool internet badges...</p>
+  <p>and more!!</p>
   <p>this is a little website to have link and other stuff that i made on the internet</p>
   <hr class="animated-bar">
   <h1>socials!!!</h1>

@@ -93,14 +93,14 @@ body::after {
     z-index: 0; /* Ensure the distortion effect is above the body content */
 }
 
-p, h1, h2, h3, h4, h5, h6, img {
+p, h1, h2, h3, h4, h5, h6, img, li{
     transition: transform 0.2s ease-out, margin 0.2s ease-out, padding 0.2s ease-out;
     text-shadow: 0 0 5px rgba(255, 0, 0, 0.75), 0 0 10px rgba(0, 255, 0, 0.75), 0 0 15px rgba(0, 0, 255, 0.75);
     position: relative; /* Ensure text is above the pseudo-elements */
     z-index: 3; /* Ensure text is above the scan lines and distortion effect */
 }
 
-p, h1, h2, h3, h4, h5, h6, img{
+p, h1, h2, h3, h4, h5, h6, img, li{
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
