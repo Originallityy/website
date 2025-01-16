@@ -13,4 +13,4 @@ and lastly i, myself, debugged some scripts and scripted some things on my own!
 # can i copy this source code?
 sure can! do whatever you want! 
 
-you can also support '@nightcrawcode' too. look at the source to see how super cool his website is!!
+you can also support `@nightcrawcode` too. look at the source to see how super cool his website is!!
