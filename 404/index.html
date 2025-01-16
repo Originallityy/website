@@ -32,7 +32,7 @@
         });
 
       // Update image sources based on the current URL
-      const baseUrl = window.location.href.includes('127.0.0.1:8000') ? 'images/' : '/website/images/';
+      const baseUrl = window.location.href.includes('127.0.0.1:8000') ||  window.location.href.includes('github.dev') ? 'images/' : '/website/images/';
       document.querySelectorAll('img').forEach(img => {
         const src = img.getAttribute('src');
         const fileName = src.split('/').pop();
@@ -41,7 +41,7 @@
 
       // Update home link based on the current URL
       const homeLink = document.getElementById('home-link');
-      const homeUrl = window.location.href.includes('127.0.0.1:8000') ? '/' : '/website';
+      const homeUrl = window.location.href.includes('127.0.0.1:8000') ||  window.location.href.includes('github.dev') ? '/' : '/website';
       homeLink.setAttribute('href', homeUrl);
     });
   </script>

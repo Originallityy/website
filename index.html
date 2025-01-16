@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="width:100%;height:auto;min-height:100%;background-color:black;overflow:auto;">
+<html style="width:100%;height:100%;background-color:black;">
 <head>
   <title>dex's website</title>
   <link rel="stylesheet" href="styles.css">
@@ -8,14 +8,15 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       if (!window.location.hash.includes("no-anim")) {
-        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, img, li").forEach(function(element) {
+        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, img, hr").forEach(function(element) {
           const rect = element.getBoundingClientRect();
-          const delay = rect.top / window.innerHeight * 1.25; // Adjust the multiplier as needed
+          const delay = rect.top / window.innerHeight * 1; // Adjust the multiplier as needed
           element.style.setProperty('--animation-delay', `${delay}s`);
-          element.classList.add("animate-text");
-          element.addEventListener('animationend', function() {
-            element.classList.remove("animate-text");
-          });
+          if (element.tagName.toLowerCase() === 'hr') {
+            element.classList.add("animated-bar");
+          } else {
+            element.classList.add("animate-text");
+          }
         });
       }
 
@@ -32,7 +33,7 @@
         });
 
       // Update image sources based on the current URL
-      const baseUrl = window.location.href.includes('127.0.0.1:8000') ? 'images/' : '/website/images/';
+      const baseUrl = window.location.href.includes('127.0.0.1:8000') || window.location.href.includes('github.dev') ? '/images/' : '/website/images/';
       document.querySelectorAll('img').forEach(img => {
         const src = img.getAttribute('src');
         const fileName = src.split('/').pop();
@@ -41,7 +42,7 @@
 
       // Update 404 link based on the current URL
       const link404 = document.getElementById('link-404');
-      const linkUrl = window.location.href.includes('127.0.0.1:8000') ? '/404.html' : '/website/404.html';
+      const linkUrl = window.location.href.includes('127.0.0.1:8000') || window.location.href.includes('github.dev' ) ? '/404' : '/website/404';
       link404.setAttribute('href', linkUrl);
     });
   </script>
@@ -52,7 +53,7 @@
       <a href="/#no-anim">
         <img src="images/dex.gif" class="small-image hover-effect" alt="wip running guy" style="width: 50px; height: auto;" loading="lazy">
       </a>
-      <h1>sup this is dex's website</h1>
+      <h1> dex's website!!</h1>
       <h2 style="margin-left: 10px; font-size: 16px;"><i>   a really cool one as well</i></h2>
       <h2 style="margin-left: 10px; font-size: 10px;"><i>   [trust]</i></h2>
       <h2 style="position: absolute; right: 10px; font-size: 16px;"><i>/Home</i></h2>
