@@ -4,6 +4,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: auto;
 }
 
 body {
@@ -110,10 +111,10 @@ img {
     padding: 5px; /* Added padding */
 }
 
-img:hover {
+/*img:hover {
     transform: scale(1.1);
-    padding: 10px; /* Increase padding on hover */
-}
+    padding: 10px; /* Increase padding on hover
+}*/
 
 .small-image {
   width: 100px; /* or any desired width */
@@ -156,3 +157,38 @@ a:hover {
     animation: stretchBar 2s forwards; /* Adjust the duration of the animation */
     margin: 20px 0; /* Adjust the margin as needed */
 }
+
+.hover-effect {
+  transition: transform 0.3s, padding 0.3s;
+}
+
+.hover-effect:hover {
+  transform: scale(1.1);
+  padding: 10px; /* Increase padding on hover */
+}
+
+.custom-position-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+    margin-top: 125px; /* Add margin to create space */
+  }
+  
+.custom-position {
+  position: absolute;
+}
+
+.footer-image {
+  display:flex;
+  width: auto;
+  height: auto;
+}
+
+.penny-image {
+    left: 60%;
+    top: 65%;
+    width: auto;
+    height: auto;
+  }
