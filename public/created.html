@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" style="width:100%;background-color:black;overflow:auto;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found</title>
+  <link id="dynamic-favicon" rel="icon" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="dex's really cool website" />
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (!window.location.hash.includes("no-anim")) {
+        document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, img").forEach(function(element) {
+          const rect = element.getBoundingClientRect();
+          const delay = rect.top / window.innerHeight * 1.25; // Adjust the multiplier as needed
+          element.style.setProperty('--animation-delay', `${delay}s`);
+          element.classList.add("animate-text");
+          element.addEventListener('animationend', function() {
+            element.classList.remove("animate-text");
+          });
+        });
+      }
+
+      // Fetch a random cat fact
+      fetch('https://catfact.ninja/fact')
+        .then(response => response.json())
+        .then(data => {
+          const fact = data.fact.replace(/\b[A-Z]/g, char => char.toLowerCase());
+          document.getElementById('cat-fact').innerText = fact;
+        })
+        .catch(error => {
+          console.error('Error fetching cat fact:', error);
+          document.getElementById('cat-fact').innerText = 'awww mann! could not fetch cat fact 3: (error - ' + error.message + ')';
+        });
+
+      // Update favicon based on the current URL
+      const favicon = document.getElementById('dynamic-favicon');
+      const currentUrl = window.location.href;
+      if (currentUrl.includes('127.0.0.1') || currentUrl.includes('myurl.com')) {
+        favicon.href = '/favicon.ico';
+      } else {
+        favicon.href = '/website/favicon.ico';
+      }
+
+      // Update image sources based on the current URL
+      const baseUrl = window.location.href.includes('127.0.0.1:8000') ||  window.location.href.includes('github.dev') ? 'images/' : '/website/images/';
+      document.querySelectorAll('img').forEach(img => {
+        const src = img.getAttribute('src');
+        const fileName = src.split('/').pop();
+        img.setAttribute('src', baseUrl + fileName);
+      });
+
+      // Update home link based on the current URL
+      const homeLink = document.getElementById('home-link');
+      const homeUrl = window.location.href.includes('127.0.0.1:8000') ||  window.location.href.includes('github.dev') ? '/' : '/website';
+      homeLink.setAttribute('href', homeUrl);
+
+      // Update 404 link based on the current URL
+      const link404 = document.getElementById('link-404');
+      const linkUrl = window.location.href.includes('127.0.0.1:8000') || window.location.href.includes('github.dev') ? '/404.html' : '/website/404.html';
+      link404.setAttribute('href', linkUrl);
+    });
+  </script>
+</head>
+<body>
+  <div class="center-container">
+    <div style="display: flex; align-items: center;">
+      <a href="/#no-anim">
+        <img src="images/dex.gif" class="small-image hover-effect" alt="wip running guy" style="width: 50px; height: auto;" loading="lazy">
+      </a>
+      <h1>dex's website!!</h1>
+      <h2 style="margin-left: 10px; font-size: 16px;"><i>   a really cool one as well</i></h2>
+      <h2 style="margin-left: 10px; font-size: 10px;"><i>   [trust]</i></h2>
+      <h2 style="position: absolute; right: 10px; font-size: 16px;"><i>/404</i></h2>
+    </div>
+  </div>
+  <h1>404 NOT FOUND</h1>
+  <a id="link-404">
+  </a>
+  <p>the silly cat looked far and wide... but could'nt find anything.</p>
+  <p>maybe try going back home???</p>
+  <hr class="animated-bar">
+
+  <div class="custom-position-container" style="display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+    <h3>you reached the end of this page.</h3>
+    <img src="images/footerr.png" alt="footer" loading="lazy" class="custom-position footer-image">
+  </div>
+</body>
+</html>
